@@ -56,6 +56,10 @@ module.exports = {
                 link: 'https://deomkds.github.io/OpenCore-Post-Install/'
             },
             {
+                text: 'Multiboot com o OpenCore',
+                link: 'https://deomkds.github.io/OpenCore-Multiboot/'
+            },
+            {
                 text: 'Guia de Compra de Wi-Fi',
                 link: 'https://deomkds.github.io/Wireless-Buyers-Guide/'
             },
