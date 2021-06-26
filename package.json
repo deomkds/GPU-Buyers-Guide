@@ -1,5 +1,5 @@
 {
-  "name": "OpenCore-Desktop-Guide",
+  "name": "GPU-Buyers-Guide",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -25,5 +25,6 @@
   },
   "dependencies": {
     "vuepress-theme-yuu": "^2.3.0"
-  }
+  },
+  "author": "Marcus Vinícius <mv.cunha2009@gmail.com>"
 }
