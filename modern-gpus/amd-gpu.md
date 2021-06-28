@@ -1,15 +1,15 @@
-# AMD GPUs
+# GPUs AMD
 
-## Native AMD GPUs
+## GPUs AMD Nativas
 
-### **Navi 10 Series**
+### **Navi - Série 10**
 
-#### Highest Supported OS: Current/Big Sur(11)
-#### Initial Supported OS: Catalina(10.15)
+#### Suporte Recente: Versão Atual / Big Sur (11)
+#### Suporte Inicial: Catalina (10.15)
 
-Currently, as of 10.15.1, Apple has finally added RDNA and Navi support!
+Atualmente, desde o 10.15.1, a Apple finalmente adicionou suporte a RDNA e Navi!
 
-Supported Cards:
+Placas suportadas:
 
 * RX 5500
 * RX 5500 XT
@@ -24,44 +24,44 @@ Radeon Pro:
 * Radeon Pro W5500
 * Radeon Pro W5700
 
-Note: Most Navi cards currently require the boot argument `agdpmod=pikera` to get proper display out, also keep in mind DisplayPort can be a hit or miss as WhateverGreen needs to be adapted. See here for more info: [RX5700XT: No dual monitor with WEG](https://github.com/acidanthera/bugtracker/issues/617)
+Observação: a maioria das placas Navi atualmente exigem o uso do argumento de boot `agdpmod=pikera` para ter saída de vídeo apropriada. Também, lembre-se de que a DisplayPort ainda é instável pois o WhateverGreen ainda precisa ser adaptado. Veja mais informações aqui: [RX5700XT: Sem dual monitor com o WEG](https://github.com/acidanthera/bugtracker/issues/617) (em inglês).
 
-Needed kexts:
+Kexts necessárias:
 
-* [lilu.kext](https://github.com/acidanthera/Lilu/releases)
+* [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
 
-**Important note for MSI Navi users**: 
+**Observação importante para usuários de placas Navi da MSI**:
 
-* Apple currently has a VBIOS bug which crashes installers if an MSI Navi card is present, see here for more details: [Installer not working with 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901)
-* MSI's Polaris and Vega line are not affected by this bug
+* A Apple atualmente tem um bug de VBIOS que trava os instaladores se uma placa Navi da MSI estiver presente. Veja mais detalhes aqui: [Instalador não funciona com a 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901) (em inglês).
+* As linhas Polaris e Vega da MSI não são afetadas por este bug.
 
-### **Vega 20 series**
-#### Highest Supported OS: Current/Big Sur(11)
-#### Initial Supported OS: Mojave(10.14.5)
+### **Vega Série 20**
+#### Suporte Recente: Versão Atual / Big Sur (11)
+#### Suporte Inicial: Mojave (10.14.5)
 
-So all Vega based GPUs are natively supported in macOS with Vega 20 GPUs starting in Mojave. While natively supported, it's recommended to still have WhateverGreen.kext installed as this helps with proper framebuffer connections and fixes other odd issues like proper ACPI mapping and such
+Todas as GPUs Vega são suportadas nativamente pelo macOS com GPUs Vega 20 iniciando no macOS 10.14 Mojave. Embora nativamente suportadas, ainda é recomendado ter a WhateverGreen.kext instalada pois ela ajuda a ter as conexões de *framebuffer* apropriadas e corrige outros problemas estranhos, como mapeamento ACPI apropriado e coisas do tipo.
 
-Supported Cards:
+Placas suportadas:
 
 * Radeon VII
 
-Needed kexts:
+Kexts necessárias:
 
-* [lilu.kext](https://github.com/acidanthera/Lilu/releases)
+* [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
 
-### **Vega 10 series**
-#### Highest Supported OS: Current/Big Sur(11)
-#### Initial Supported OS: High Sierra(10.13)
+### **Vega Série 10**
+#### Suporte Recente: Versão Atual / Big Sur (11)
+#### Suporte Inicial: High Sierra (10.13)
 
-Just like with Vega 20, Vega 10 GPUs are natively supported in macOS though these card's support starts in High Sierra. Similar to Vega 20, it's recommended to still have WhateverGreen.kext installed as this helps with proper framebuffer connections and fixes other odd issues like proper ACPI mapping and such.
+Assim como com a Vega 20, as GPUs Vega 10 possuem suporte nativo no macOS, embora o suporte a elas tenha iniciado no macOS 10.13 High Sierra. Similar às GPUs Vega 20, ainda é recomendado ter a WhateverGreen.kext instalada pois ela ajuda a ter as conexões de *framebuffer* apropriadas e corrige outros problemas estranhos, como mapeamento ACPI apropriado e coisas do tipo.
 
-And for those who want to overclock/undervolt, check out [PyVega](https://github.com/corpnewt/PyVega)
+E para aqueles que queiram fazer *overclock* ou *undervolt*, veja [PyVega](https://github.com/corpnewt/PyVega).
 
-The only brand of GPUs to **avoid with Vega 10 are XFX**. The reason being is VBIOS communication issues which can't be easily solved with a reference BIOS due to how Vega's powerplay table interacts between the OS and GPU.
+A única marca de GPUs Vega 10 a se **evitar são as da XFX**. O motivo para isso é que elas possuem problemas de comunicação na VBIOS que não podem ser facilmente solucionados usando uma BIOS de referência. Isso se dá devido a forma como a tabela *powerplay* das GPUs Vega interagem entre o sistema operacional e a placa de vídeo.
 
-Supported Cards:
+Placas suportadas:
 
 * Vega 64 Liquid
 * Vega 64
@@ -73,29 +73,30 @@ Radeon Pro:
 * Radeon Pro WX 9100
 * Radeon Pro WX 7100
 
-Needed kexts:
+Kexts necessárias:
 
-* [lilu.kext](https://github.com/acidanthera/Lilu/releases)
+* [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
 
-### **Polaris 10 and 20 series**
-#### Highest Supported OS: Current/Big Sur(11)
-#### Initial Supported OS: Sierra(10.12)
+### **Polaris Séries 10 e 20**
+#### Suporte Recente: Versão Atual / Big Sur (11)
+#### Suporte Inicial: Sierra (10.12)
 
-Regarding Polaris, basically every model of card is supported as long as it’s running either a Polaris or Baffin core(lower end cards like the RX550 run a Lexa core meaning no support in macOS).
+Em se tratando de GPUs Polaris, basicamente todo modelo de placa é suportado desde que esteja utilizando um núcleo Polaris ou Baffin. Placas de entrada como a RX550 utilizam um núcleo Lexa, o que significa zero suporte no macOS.
 
-The only brand of GPU **you should** **avoid with the Polaris series would be XFX, PowerColour, HIS and VisionTek** as many users have had issues with these cards with viewing Clover and macOS booting but other users have found fixes/workarounds(though nothing consistent). This seems to be caused by having an odd VBIOS that doesn't communicate well with macOS and the only real solution is flashing another VBIOS which is not ideal for most users.
+As marcas de GPUs da série Polaris que **você deve evitar** são XFX, PowerColour, HIS e VisionTek. Muitos usuários tiveram problemas com essas placas ao exibir o Clover e na inicialização do macOS. Outros usuários encontraram soluções/gambiarras, mas nada muito consistente. Isso parece ser causado pelo fato de possuírem uma VBIOS esquisita que não se comunica muito bem com o macOS. A única solução de verdade é flashear outra VBIOS, o que não é ideal para a maioria dos usuários.
 
-Supported cards:
 
-400 Series:
+Placas suportadas:
+
+Série 400:
 
 * RX 480
 * RX 470D
 * RX 470
 * RX 460
 
-500 Series:
+Série 500:
 
 * RX 590
 * RX 580X
@@ -111,53 +112,54 @@ Radeon Pro:
 * WX 4100
 * E9550
 
-Needed kexts:
+Kexts necessárias:
 
-* [lilu.kext](https://github.com/acidanthera/Lilu/releases)
+* [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
 
 ### **R7/R9**
-#### Highest Supported OS: Current/Big Sur(11)
-#### Initial Supported OS: Yosemite(10.10)
+#### Suporte Recente: Versão Atual / Big Sur (11)
+#### Suporte Inicial: Yosemite (10.10)
 
-R7/R9 is also natively supported in Catalina without too much issue but we cannot guarantee the success of R5 and R7 cards due to not having many reports of success with them. Also, be wary that differing from the reference design of these cards have many more issues that require a lot of work to get them to run properly. Sapphire cards are your best bet
-Also, the R9 280x/380x are a hit or miss on compatibility.
+Placas R7 e R9 também são suportadas nativamente no macOS 10.15 Catalina sem muitos problemas, porém não é possível garantir sucesso com placas R5 e R7 por não haver muitos relatos de sucesso com elas. Também lembre-se de que placas que diferem do design de referência podem apresentar muitos outros problemas que darão mais trabalho para resolver. As placas Sapphire são a melhor aposta. Por fim, as placas R9 280x/380x são inconsistentes no quesito compatibilidade.
 
-Supported cards:
+Placas suportadas:
 
 * R9 Fury X
 * R9 Fury
 * R9 Nano
-* R9 390(FakeID needed)
+* R9 390 (necessário FakeID)
 * R9 290X/390X
-* R9 290/390(FakeID needed)
-* R9 280x/380x (Hit or miss)
-* R9 280/380(FakeID needed)
+* R9 290/390 (necessário FakeID)
+* R9 280x/380x (inconsistente)
+* R9 280/380 (necessário FakeID)
 * R9 270X/370X
-* R7 270/370(FakeID needed)
+* R7 270/370 (necessário FakeID)
 * R7 265
 * R7 260x/360x
-* R9 260/360(FakeID may be required depending on model)
+* R9 260/360 (FakeID talvez seja necessário dependendo do modelo)
 * R9 255
 * R7 250X
-* R7 250(FakeID needed)
-* R7 240(FakeID needed)
+* R7 250 (necessário FakeID)
+* R7 240 (necessário FakeID)
 
-Needed kexts
+Kexts necessárias:
 
-* [lilu.kext](https://github.com/acidanthera/Lilu/releases)
+* [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
 
 Extras:
 
-* `radpg=15`: Required for HD 7730/7750/7770/R7 250/R7 250X GPU initialization)
-* `-raddvi` boot flag: Fixes DVI, required for 290X, 370, etc
-* InjectAMD: While deprecated, some users require this for proper initialization, avoid unless absolutely necessary
-* [Applying a FakeID Guide](https://dortania.github.io/Getting-Started-With-ACPI/Universal/spoof.html)
+* `radpg=15`: exigido para a inicialização das GPUs HD 7730/7750/7770/R7 250/R7 250X.
+* Argumento de boot `-raddvi`: Corrige a DVI, exigido para 290X, 370 etc.
+* InjectAMD: Embora descontinuado, alguns usuários precisam disso para ter inicialização apropriada. Evite usar a não ser que seja absolutamente necessário.
+* [Guia Aplicando um FakeID](https://deomkds.github.io/Getting-Started-With-ACPI/Universal/spoof.html)
 
-### **HD 8000 Series(8xxx)**
-#### Highest Supported OS: Current/Big Sur(11)
-#### Initial Supported OS: Mountain Lion(10.8)
+### **Série HD 8000 (8xxx)**
+#### Suporte Recente: Versão Atual / Big Sur (11)
+#### Suporte Inicial: Mountain Lion (10.8)
+
+Placas suportadas:
 
 * HD 8740
 * HD 8760
@@ -168,14 +170,16 @@ Extras:
 * HD 8950
 * HD 8970
 
-### **HD 7000 Series(7xxx)**
-#### Highest Supported OS: Current/Big Sur(11)
-#### Initial Supported OS: Mountain Lion(10.8)
+### **Série HD 7000 (7xxx)**
+#### Suporte Recente: Versão Atual / Big Sur (11)
+#### Suporte Inicial: Mountain Lion(10.8)
+
+Placas suportadas:
 
 * Dual AMD FirePro D300
 * Dual AMD FirePro D500
 * Dual AMD FirePro D700
-* FirePro W5100(FakeID needed)
+* FirePro W5100 (necessário FakeID)
 * FirePro W7000
 * FirePro W9000
 * HD 7700
@@ -190,35 +194,35 @@ Extras:
 * HD 7970
 * HD 7990
 
-Needed kexts
+Kexts necessárias:
 
-* [lilu.kext](https://github.com/acidanthera/Lilu/releases)
+* [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
 
 Extras:
 
-* `radpg=15`: Required for HD 7730/7750/7770/R7 250/R7 250X GPU initialization)
-* InjectAMD: While deprecated, some users require this for proper initialization, avoid unless absolutely necessary
+* `radpg=15`: exigido para a inicialização das GPUs HD 7730/7750/7770/R7 250/R7 250X.
+* InjectAMD: Embora descontinuado, alguns usuários precisam disso para ter inicialização apropriada. Evite usar a não ser que seja absolutamente necessário.
 
-## Unsupported AMD GPUs
+## GPUs AMD Não Suportadas
 
-### **Navi 20 series**
-#### Highest Supported OS: None
+### **Navi Série 20**
+#### Suporte Recente: Nenhum
 
-These GPUs are slated for support sometime in the next few macOS releases as we have full confirmation on framebuffer and PCI ID support in the drivers. However, at this moment, there is limited functionality with these GPUs so we recommend holding off purchasing until proper acceleration has been achieved in the public.
+Essas GPUs estão na fila para o suporte em algum momento nas próximas versões do macOS. Isso é fato conhecido pois existe confirmação certa sobre o suporte ao *framebuffer* e ao ID de PCI nos drivers. No entanto, neste momento, o funcionamento existente é limitado nessas GPUs e por isso recomenda-se adiar a compra até que as versões públicas recebam aceleração apropriada.
 
-Unsupported Cards:
+Placas não suportadas:
 
 * RX 6800
 * RX 6800 XT
 * RX 6900 XT
 
-### **Lexa Series**
-#### Highest Supported OS: None
+### **Série Lexa**
+#### Suporte Recente: Nenhum
 
-While these GPUs may share the same family name as the Polaris GPUs, these cards are drastically different meaning no support in any version of macOS. Similar to Navi and unsupported Nvidia GPUs, you'll need to disable the Lexa GPU due to how the Vesa drivers that unsupported GPUs run off of break sleep and other functions in macOS. Please refer to the [Disabling unsupported GPUs Guide](https://www.reddit.com/r/hackintosh/comments/bu1wf8/how_to_disable_your_unsupported_gpu_for_macos/)
+Embora essas GPUs compartilhem o mesmo nome de família das GPUs Polaris, essas placas são drasticamente diferentes. Isso significa que não há suporte em nenhuma versão do macOS para elas. Similar às Navi e às  GPUs não suportadas da Nvidia, será necessário desativar as GPUs Lexa devido a como os drivers VESA que essas GPUs usam quebram a suspensão e outros recursos do macOS. Por favor, refira-se ao guia sobre como [desativar GPUs não suportadas](https://www.reddit.com/r/hackintosh/comments/bu1wf8/how_to_disable_your_unsupported_gpu_for_macos/) no macOS.
 
-Unsupported Cards:
+Placas não suportadas:
 
 * WX 3100
 * WX 2100
@@ -227,15 +231,15 @@ Unsupported Cards:
 * RX 540X
 * RX 540
 
-### **AMD APUs (ALL VARIANTS)**
-#### Highest Supported OS: None
+### **APUs da AMD (TODAS AS VARIANTES)**
+#### Suporte Recente: Nenhum
 
-The integrated GPU found on lower end AMD CPUs have unfortunately never had official support with community support quite lacking. While possible to get a display out with some work, graphics acceleration is basically impossible making these APUs more of a hazard to macOS.
+As GPUs integradas encontradas em CPUs AMD de entrada nunca tiveram suporte oficial e o suporte por parte da comunidade é fraco. Embora seja possível conseguir uma saída de vídeo com um pouco de esforço, aceleração gráfica é basicaente impossível. Isso torna essas APUs algo mais próximo de um perigo para o macOS.
 
-Unsupported APUs:
+APUs não suportadas:
 
-* Vega 11(Zen)
-* Vega 8(Zen)
-* GCN 3(Escavator Gen 2, Steamroller)
-* GCN 2(Escavator Gen 1, Puma, Puma +)
+* Vega 11 (Zen)
+* Vega 8 (Zen)
+* GCN 3 (Escavator 2ª geração, Steamroller)
+* GCN 2 (Escavator 1ª geração, Puma, Puma+)
 
