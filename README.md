@@ -1,47 +1,46 @@
-# Introduction
-
-
+# Introdução
 
 ![](logo.png)
 
-So it's that time of year again, a new version of macOS has been released and the age-old question will be asked once again:
+É aquela época do ano de novo, uma nova versão do macOS foi lançada e aquela pergunta centenária será feita novamente:
 
-**What GPUs are supported with macOS 11 Big Sur?**
+**Quais GPUs são suportadas pelo macOS 11 Big Sur?**
 
-Well you've come to the right place, I'll give a quick rundown on the situation and go into more detail on exact GPUs we recommend.
+Bem, você veio ao lugar certo. Este guia dará uma passada rápida na situação e depois entrará em detalhes sobre quais GPUs são recomendadas.
 
-## A quick refresher with Nvidia and WebDrivers
+## Um Lembrete Rápido Sobre Nvidia e WebDrivers
 
 ![WebDrivers](WebDrivers.gif)
 
-Well currently as of the time of writing, we've gone a full OS cycle without official drivers from Nvidia for their Maxwell, Pascal or Turing GPUs. What this means is that users of these GPUs have no support for Mojave, Catalina or Big Sur so are stuck with macOS 10.13 High Sierra. Who's to blame? Well it's 2 giant, egotistical companies who both refuse to work together so the blame can go both ways. Do keep in mind that the WebDrivers have a VRAM leakage issue that they've yet to address, so a theory to why Apple refuses Nvidia drivers in macOS may be due to how Nvidia refuses to hand over the driver stack. Think it's a coincidence that both AMD and Intel have open-sourced drivers? Well, either wa/y, it doesn't change the fact there's no support.
+No momento da escrita deste guia, já se passou um ciclo completo de lançamento do macOS sem drivers oficiais da Nvidia para GPUs das arquiteturas Maxwell, Pascal ou Turing. O que isso significa é que usuários dessas GPUs não possuem suporte no macOS 10.14 Mojave, 10.15 Catalina e 11 Big Sur e estão presos no macOS 10.13 High Sierra. E de quem é a culpa? Bom, são duas empresas gigantes e egoístas que recusam a trabalhar juntas então a culpa pode ser de ambas. Mas lembre-se que os WebDrivers possuem um problema de vazamento de VRAM que ainda não foi resolvido, então a teoria do porquê a Apple recusa ter os drivers da Nvidia no macOS talvez seja consequência da forma como a Nvidia se recusa a entregar a pilha de drivers. Acha que é coincidência que tanto a AMD quanto a Intel abriram o código para seus drivers? Bom, de qualquer forma, isso não muda o fato de que ainda não há suporte.
 
-Users with Kepler based GPUs are in the clear though, they utilize Apple's native drivers
+Usuários de GPUs Kepler podem ficar tranquilos, no entanto, pois estas GPUs utilizam os drivers nativos da Apple.
 
-And for those who want some reading to do: [When will the Nvidia Web Drivers be released for macOS Mojave 10.14 ](https://devtalk.nvidia.com/default/topic/1042520/drivers/-when-will-the-nvidia-web-drivers-be-released-for-macos-mojave-10-14-/post/5358999/#5358999)
+E para aqueles que queiram ler mais sobre isso: [Quando os WebDrivers da Nvidia serão lançados para o macOS 10.14 Mojave](https://devtalk.nvidia.com/default/topic/1042520/drivers/-when-will-the-nvidia-web-drivers-be-released-for-macos-mojave-10-14-/post/5358999/#5358999) (em inglês).
 
-Great read as it shows how even upper management doesn't have a good answer for customers
+Ótima leitura, já que mostra como nem mesmo gerentes sênior não têm uma boa resposta para seus clientes.
 
-## So if my GPU is natively supported, why do i need Lilu and WhateverGreen?
+## Então, se minha GPU possui suporte nativo, por que eu preciso do Lilu e do WhateverGreen?
 
-This is a question comes up quite a bit in the Hackintosh community, and for good reason as to why in the world would these GPUs work out of the box on a mac and not a Hackintosh? Well, the reason being is that PCs and Macs have different internal wiring and so the ACPI layouts in a PC don't work well with Macs in different scenarios. To get around this, we use [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases) and it's companion [Lilu](https://github.com/acidanthera/Lilu/releases) to patch different parts of our Hackintosh like renaming devices, assisting in framebuffer connections, patching audio connectors, allowing modifications to aty\_config, aty\_properties, cail\_properties via ACPI and so much more. With such a large feature set and developed by someone who knows what they're doing, there's no reason not to use it
+Essa é uma pergunta que aparece com bastante frequência na comunidade Hackintosh, e por um bom motivo, já que é estranho o fato dessas GPUs funcionarem sem modificações em um Mac, mas não em um *hackintosh*. Bom, o motivo para isso é que PCs e Macs possuem conexões internas diferentes e por causa disso, os leiautes da ACPI em um PC não funcionam bem com Macs em cenários diferentes. Para contornar isso, é preciso usar a kext [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases) e a kext companheira [Lilu](https://github.com/acidanthera/Lilu/releases) para corrigir diferentes partes do *hackintosh*, como renomear dispositivos, auxiliar com conexões de *framebuffer*, corrigir conectores de áudio, permitir modificar aty\_config, aty\_properties, cail\_properties por meio da ACPI e muito mais. Com tamanha quantidade de recursos e por ser desenvolvida por alguém que sabe o que está fazendo, não há motivo para não usá-la.
 
-## So what are my options?
+## Então quais são as minhas opções?
 
-So there’s still 2 routes for discrete GPUs you can go, either AMD or Nvidia(Yes, there’s actually natively supported Nvidia cards in Catalina). So I’ll be going over what GPUs are compatible and what features/drawbacks they hold.
+Existem duas opções de GPUs dedicadas para escolher, tanto AMD quanto Nvidia (sim, ainda existem GPUs Nvidia com suporte nativo no macOS 10.15 Catalina), por isso cobriremos quais GPUs são compatíveis e quais recursos/falhas elas têm.
 
-Things to remember:
+Coisas para se lembrar:
 
-* macOS does not support either SLI, Crossfire or GPUs will multiple main cores(like the Radeon Pro Duo). This may change with the release of the Radeon Pro Vega II Duo in the Mac Pro
-* Getting audio through HDMI/DisplayPort may require extra work with both AppleALC.kext and some other IO-REG edits
-* GPU Overclocking is limited to Vega 10 GPUs with [PyVega](https://github.com/corpnewt/PyVega)
-* Running supported GPUs alongside unsupported GPUs can have weird consequences as unsupported GPUs run off VESA drivers which have the issue in which it can break sleep and other functions in macOS. Please refer to the [Disabling unsupported GPUs Guide](https://dortania.github.io/OpenCore-Install-Guide/extras/spoof.html) for more info
+* O macOS não oferece suporte para SLI, Crossfire ou GPUs com múltiplos núcleos principais, como a Radeon Pro Duo. Isso talvez mude com o lançamento da Radeon Pro Vega II Duo no Mac Pro.
+* Fazer o áudio funcionar na HDMI/DisplayPort talvez exiga mais trabalho tanto com a AppleALC.kext quanto com algumas outras alterações no IOREG.
+* *Overclock* de GPU é limitado a GPUs Vega 10 com o [PyVega](https://github.com/corpnewt/PyVega).
+* Usar GPUs suportadas junto com GPUs não suportadas pode trazer consequências estranhas, já que GPUs não suportadas utilizam os drivers VESA, que possuem problemas de interferência na suspensão e outras funções do macOS. Por favor, refira-se ao guia sobre como [desativar GPUs não suportadas](https://deomkds.github.io/OpenCore-Install-Guide/extras/spoof.html) para obter mais informações.
 
-## Can I run an unsupported GPU in my hack?
+## Posso usar uma GPU não suportada no meu hack?
 
-So something to keep in mind when running an unsupported GPU in macOS is will fall back on VESA drivers when no real drivers are present. These are very simple, CPU based drivers that are used as a stop-gap while you wait to install the correct drivers but many basic functions of macOS are broken when running this way including sleep and general stability. And since these GPUs have no drivers even outside of Apple, we need some way to stop the unsupported GPU from being recognized in macOS. So what do we do? Well I'm glad you ask. With my patent pending [How to disable your unsupported GPU for macOS Guide](https://dortania.github.io/OpenCore-Install-Guide/extras/spoof.html), even a simpleton like you can experience the glories of Mojave and beyond!
+Algo para se ter em mente ao usar GPUs não suportadas no macOS é que elas usarão os drivers VESA quando nenhum driver apropriado estiver presente. Esses são drivers muito simples, baseados em CPU, usados somente como paliativo até que se instale os drivers corretos. Muitas funções do macOS quebram ao executar o sistema dessa forma, incluindo a suspensão e a estabilidade geral. Como essas GPUs não possuem drivers nem mesmo fora da Apple, é necessário encontrar uma forma de impedir que as GPUs não suportadas sejam reconhecidas no macOS.
 
-> But can I render macOS on my iGPU but use the video outs on my unsupported GPU?
+Então, o que fazer? Ficamos felizes por perguntar. Basta seguir o guia [Como desativar GPUs não suportadas no macOS](https://deomkds.github.io/OpenCore-Install-Guide/extras/spoof.html), até mesmo você pode experimentar as glórias do macOS 10.14 Mojave e além!
 
-Unfortunately not, and the reason being is actually quite similar to how Nvidia's Optimus technology functions. You would first need a way to grab/encode the iGPU's signal, send it towards the discrete GPU, then have said GPU decode the signal and display it. One small problem, decoding the signal would require proper GPU acceleration which your unsupported GPU doesn't have. So you will need to use your motherboard's video out ports no matter what
+> Mas é possível renderizar o macOS na GPU integrada e usar as saídas de vídeo da minha GPU não suportada?
 
+Infelizmente não. E o motivo para isso é bastante similar a como a tecnologia Optimus da Nvidia funciona. Primeiro, seria necessário encontrar uma forma de pegar/codificar o sinal da GPU integrada, enviá-lo para a GPU dedicada e então fazer com que essa GPU decodifique-o para exibí-lo. Mas existe um pequeno problema: para decodificar um sinal de vídeo, seria necessário ter aceleração gráfica apropriada, coisa que a GPU não suportada não possui. Então será necessário utilizar as saídas de vídeo da placa-mãe de qualquer maneira.
