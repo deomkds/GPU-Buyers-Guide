@@ -12,7 +12,7 @@ Bem, você veio ao lugar certo. Este guia dará uma passada rápida na situaçã
 
 No momento da escrita deste guia, já se passou um ciclo completo de lançamento do macOS sem que os drivers oficiais da Nvidia para as GPUs Maxwell, Pascal e Turing fossem lançados. Isso significa que os donos dessas GPUs não têm suporte no macOS 10.14 Mojave, 10.15 Catalina e 11 Big Sur, ficando presos no macOS 10.13 High Sierra. Mas de quem é a culpa? Bom, são duas empresas gigantes e egoístas que se recusam a trabalharem juntas, então a culpa pode ser de ambas. Além disso, lembre-se de que os WebDrivers ainda possuem um problema de vazamento de VRAM que não foi resolvido, então a teoria do porquê a Apple se recusa a usar os drivers da Nvidia no macOS talvez seja consequência da forma como a Nvidia se recusa a abrir o código da pilha de drivers. Ou você acha que é coincidência que tanto a AMD quanto a Intel tenham aberto o código para seus drivers? Bom, de qualquer forma, isso não muda o fato de que ainda não há suporte.
 
-Usuários de GPUs Kepler podem ficar tranquilos, no entanto, pois estas GPUs utilizam os drivers nativos da Apple.
+O suporte à arquitetura Kepler foi removido no macOS 12 Monterey. Portanto, não há mais suporte para GPUs Nvidia em versões recentes do macOS.
 
 E para aqueles que queiram ler mais sobre isso: [Quando os WebDrivers da Nvidia serão lançados para o macOS 10.14 Mojave](https://devtalk.nvidia.com/default/topic/1042520/drivers/-when-will-the-nvidia-web-drivers-be-released-for-macos-mojave-10-14-/post/5358999/#5358999) (em inglês).
 
@@ -24,18 +24,18 @@ Essa é uma pergunta que aparece com bastante frequência na comunidade Hackinto
 
 ## Então quais são as minhas opções?
 
-Existem duas opções de GPUs dedicadas para escolher, tanto AMD quanto Nvidia (sim, ainda existem GPUs Nvidia com suporte nativo no macOS 10.15 Catalina), por isso cobriremos quais GPUs são compatíveis e quais recursos/falhas elas têm.
+macOS Monterey dropped support for all NVIDIA GPUs, including Kepler-based cards, meaning AMD dedicated GPUs and Intel integrated GPUs are the only way to go for the latest version.
 
 Coisas para se lembrar:
 
 * O macOS não oferece suporte para SLI, Crossfire ou GPUs com múltiplos núcleos principais, como a Radeon Pro Duo. Isso talvez mude com o lançamento da Radeon Pro Vega II Duo no Mac Pro.
-* Fazer o áudio funcionar na HDMI/DisplayPort pode exigir um esforço maior com a AppleALC.kext e com algumas outras alterações no IOREG.
+* Fazer o áudio funcionar na HDMI/DisplayPort pode exigir um esforço maior com a `AppleALC.kext` e com algumas outras alterações no IOREG.
 * *Overclock* de GPU é limitado a GPUs Vega 10 com o [PyVega](https://github.com/corpnewt/PyVega).
 * Usar GPUs suportadas junto com GPUs não suportadas pode trazer consequências estranhas, já que GPUs não suportadas utilizam os drivers VESA, que possuem problemas capazes de quebrar tanto a suspensão quanto outras funções do macOS. Por favor, refira-se ao guia sobre como [desativar GPUs não suportadas](https://deomkds.github.io/OpenCore-Install-Guide/extras/spoof.html) para obter mais informações.
 
 ## Posso usar uma GPU não suportada no meu hack?
 
-Algo para se ter em mente ao usar GPUs não suportadas no macOS é que elas usarão os drivers VESA quando nenhum driver apropriado estiver presente. Esses são drivers muito simples, baseados em CPU, usados somente como paliativo até que se instale os drivers corretos. Muitas funções do macOS quebram ao executar o sistema dessa forma, incluindo a suspensão e a estabilidade geral. Como essas GPUs não possuem drivers nem mesmo fora da Apple, é necessário encontrar uma forma de impedir que as GPUs não suportadas sejam reconhecidas no macOS.
+Algo para se ter em mente ao usar GPUs não suportadas no macOS é que elas usarão os drivers VESA quando nenhum driver apropriado estiver presente. Esses são drivers muito simples, baseados em CPU, usados somente como paliativo até que se instale os drivers corretos. Muitas funções do macOS quebram ao executar o sistema dessa forma, incluindo a suspensão e a estabilidade geral. Como essas GPUs não possuem drivers nem mesmo fora da Apple, é necessário encontrar uma forma de impedir que as GPUs não suportadas sejam reconhecidas no macOS. Consulte a seção [Desabilitando GPUs](https://deomkds.github.io/OpenCore-Install-Guide/extras/spoof.html) para obter mais informações.
 
 Então, o que fazer? Ficamos felizes por perguntar. Basta seguir o guia sobre como [desativar GPUs não suportadas no macOS](https://deomkds.github.io/OpenCore-Install-Guide/extras/spoof.html). Assim, até mesmo você pode experimentar as glórias do macOS 10.14 Mojave e além!
 
